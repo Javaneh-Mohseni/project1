@@ -1,0 +1,335 @@
+/*
+Note: there was one closing curly brace at the end of
+the file.
+I thought it's additional, so I commented it. I tried
+both cases and nothing changes while running the code.
+If you run into errors, you might wannna uncoment it.
+
+
+how to solve the problem of vertical margin collapse
+at the top of the header.
+solution 1: set the top margin of h1 to 0
+solution 2: set a padding for the main header and
+the margin of the .name class which is the class for
+h1 to zero
+*/
+
+/*Next lesson: Centering Page Content and Creating a
+Full-width Header
+We divide the content into three containers. one for
+teh content inside the header, one for the main Content
+and one for the content inside the footer. the words
+wrapper and container can be exchanged, so we name the
+class container. for the footer, since it's only one line
+we just center align that line in css. if it had more
+lines, we could create a container div for the content
+inside the footer as well
+The main-header and main-footer don't need to get
+a width and margin because we they expand to 100%
+of the browser width by default. but the content inside
+the main-header and the main content need to get a width
+and be center aligned by setting the margin of the class
+conteiner to
+margin: 0 auto
+I also want to center aligh the content inside the
+footer, so in the footer rule, we write text-align: Centering
+
+/*Next lesson: Using a Mobile First Approach
+You design the default layout for a mobile device,
+then use media queries to adjust it for larger screens
+here for the mobile device screen, we want the
+container to be 10%of the screen width because
+otherwise it's too small, so we remove the width
+rule for the container from the default layout
+and put it in the media query. I'm also gonna add
+a max-width: 1000 px.
+
+/*Creating a sticky footer: 1. create a wrap div
+that includes the main-header and the container div.
+2. we don't include the footer in the wrap div, and
+use the min-height of the wrap div in the media query
+to force the footer to the bottom of the page.
+
+
+/*Positioning Elements Side-By-Side with Inline Display
+Remember that inline elements donutst accept any width
+or top/bottom padding or margin values. they only accept
+left/right margins.
+
+outside the media query, inside the basic layout, we add
+padding to the links inside name and main-nav to expand
+the clickable area.
+
+Next lessson: Positioning Elements Side-by-Side with inline
+display
+Next Lesson: Using Inline-Block to Set Width, Height,
+Top and Bottom Margin and padding
+Next Lesson: Removing gaps Between Inline and Inline-Block
+Elements: Solutions 1. In the lists, out the oprning <li>
+tag of the next list item immediately after the closing
+</li> of the previous list item. 2. remove the closing
+</li> tag of the list items. 3. apply a negative margin
+to the list items. The larger the font size of the list
+items, the larger this app is and you have to apply a
+larger negative value for margin to compensare for it.
+Here with the default 16px font size, the margin-right:
+-4px works great.
+Here we don't mind this app because it  makes the nav more
+readable so we actually add a little to ot and make
+the margin-right; 12px
+
+Next lesson: Wrapping text around images with float
+note that when you float an element like the img here,
+it's technically a block-level element because it accepts
+any width, height, padding or margin values, but it behaves
+like an inline element because it doesn't exist on a
+line of its own, and surrounding content floats around the
+floated element.
+if you apply border to your paragraph,
+P {
+border: solid 1px red;
+}
+you see that the
+img is actually inside the paragrah box and that shows
+that the floated element is taken out of the normal
+document flow.
+After seeing that, we removed the border.
+no what should you do if you want space between the img
+and its surrounding text? if you apply margin to the
+paragrah, it won't solve the problem because the img is
+already inside the box, so you ahve to apply the margin
+to the img.
+
+Creating a Horizontal Navigation with Floats
+Remember that if you write .main-nav li {float; right};
+it reverses the order of the navigation links
+
+With floats, you don't have to worry about white spaces
+created between inline or inline-block items. flat items sit
+adjacent to each other regardless of the html
+whitespace between them.
+
+Clearing and Containing Floats
+if a block element contains float element, is height
+collapses. here the height of the header element collapsed.
+ways to solve the problem.
+1. give the parent block element (here the header) a
+fixed height. only good for very simple layouts.
+2. set the overflow property of the parent block element
+to hidden or auto. this isn't the best solution either
+because the oerflow propert isn't specifically for floats.
+the hidden value could hide elements that we don't want
+to be hidden, and the value auto could create unwanted
+scroll bars.
+3. clearfix. this is the best way.
+
+/* =================================
+  Base Element Styles
+==================================== */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Varela Round', sans-serif;
+	line-height: 1.6;
+	color: #3a3a3a;
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.8em;
+}
+
+h2,
+h3,
+a {
+	color: #093a58;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+figure {
+	margin: 0;
+	line-height: 0;
+	position: relative;
+}
+
+figcaption {
+	font-size: .9em;
+	line-height: 1.5;
+	color: #fff;
+	padding: 1em;
+	background: rgba(19,43,102, .85);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+}
+
+
+/* =================================
+  Base Layout Styles
+==================================== */
+
+/* ---- Navigation ---- */
+
+.name {
+	font-size: 1.25em;
+	margin: 0;
+}
+
+.main-nav {
+	margin-top: 5px;
+}
+
+.name a,
+.main-nav a {
+	text-align: center;
+	display: block;
+	padding: 10px 15px;
+}
+
+.main-nav a {
+	font-size: .95em;
+	color: #3acec2;
+	text-transform: uppercase;
+}
+
+.main-nav a:hover {
+	color: #093a58;
+}
+
+/* ---- Layout Containers ---- */
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+.banner,
+.main-footer {
+	text-align: center;
+}
+
+.banner {
+	color: #fff;
+	background: #3acec2;
+	padding: 3.2em 0;
+	margin-bottom: 60px;
+}
+
+.col {
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+.main-footer {
+	background: #d9e4ea;
+	padding: 2em 0;
+	margin-top: 30px;
+}
+
+/* ---- Page Elements ---- */
+
+.logo {
+	width: 190px;
+}
+
+.headline {
+	margin-bottom: 0;
+}
+
+.icon-location {
+	width: 35px;
+	position: absolute;
+	top: -15px;
+	left: -15px;
+}
+
+/* =================================
+  Media Queries
+==================================== */
+
+@media (min-width: 769px) {
+
+	body {
+		padding-top: 68px;
+	}
+
+	.main-header {
+		position: fixed;
+		background: #fff;
+		box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+		width: 100%;
+		top: 0;
+		z-index: 10;
+		}
+
+	.container {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.name,
+	.col {
+		float: left;
+	}
+
+.primary,
+.secondary {
+	width: 50%;
+}
+
+
+	.main-nav {
+		float: right;
+	}
+
+	.main-nav li {
+		display: inline-block;
+		margin-left: 15px;
+	}
+
+	.tagline {
+		font-size: 1.4em;
+	}
+
+	/* ---- Float clearfix ---- */
+
+	.clearfix::after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+
+}
+
+
+@media (min-width: 1025px) {
+	.container {
+		width: 80%;
+		max-width: 1150px;
+	}
+
+	.primary {
+		width: 40%;
+	}
+
+	.secondary,
+	.tertiary {
+		width: 30%;
+	}
+}
