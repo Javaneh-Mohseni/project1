@@ -1,0 +1,207 @@
+Stesps:
+1. add a wrapper inside the header 
+
+2. set the margin-top of .name to zero
+
+3. set the margin-top value of main-nav to 5px
+
+4.
+.name a,
+.main-nav a {
+	text-align: center;
+	display: block;
+	padding: 10px 15px;
+}
+
+
+next is time for layout containers
+
+5. 
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+
+6.
+
+.banner,
+.main-footer {
+	text-align: center;
+}
+
+7. 
+
+.banner {
+	color: #fff;
+	background: #3acec2;
+	padding: 3.2em 0;
+	margin-bottom: 60px;
+}
+
+
+8. 
+
+.col {
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+
+next is time for page elements
+
+9. 
+
+.headline {
+	margin-bottom: 0;
+}
+
+next is tiem to style the layout for larger screens using media queries
+
+inside the @media (min-width: 769px) {   we add
+
+.container {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.name {
+		float: left;
+	}
+
+	.main-nav {
+		float: right;
+	}
+
+	.main-nav li {
+		display: inline-block;
+		margin-left: 15px;
+	}
+
+	.tagline {
+		font-size: 1.4em;
+	}
+
+
+
+
+
+next, we style the column layout in medium and larger screens
+
+
+float the columns to the lft by
+
+.name,
+.col {
+  float: left;
+}
+
+
+for the medium-size screen, we only want two columns next to each other, so we give width to only the primary and secondary
+columns.
+
+.primary, 
+.secondary {
+width: 50%;
+}
+
+
+styling the layout for large screens
+
+@media (min-width: 1025px) {
+	.container {
+		width: 80%;
+		max-width: 1150px;
+	}
+
+	.primary {
+		width: 40%;
+	}
+
+	.secondary,
+	.tertiary {
+		width: 30%;
+	}	
+}
+
+
+solving the problem of collapsing containers
+
+add the clearfix class to the container inside the main header and the container that holds all the columns
+
+
+
+ 
+
+Create an Image Caption with Absolute Positioning
+
+Add the <figure. tag inside primary col
+
+ add the figure and figcaption rules to the css
+
+next we want to position the caption over the image
+position the figcaption element absolute, and position the figure element as relative
+
+
+add the icon-location img inside the figure element in the html file, and add the .icon-location rule
+in the Page Elements section of the css file
+
+Fixed Positioning
+
+next, you want to make your header and footer fixed
+inside the first media query for the medium-size screen
+
+.main-header {
+		position: fixed;
+		background: #fff;
+		box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+		width: 100%;
+		top: 0;
+		}
+
+now, what's the resulting problem?
+Fixed elements, just like absolute elements, are taken out of the normal document flow, so now it's covering the top of 
+the banner. to fix this we add padding-top to the banner
+
+inside the first media query for medium-size screens, we add
+
+body {
+padding-top: 68px;
+}
+
+
+z-index
+
+what's the problem now? when you scroll down, the figure element covers the main-header element. to solve this, add this
+to the main-header rule
+
+z-index: 10; /*This could be any value larger than zero. we're just being cautious in case we want to add more elements 
+later */
+
+
+Note: z-index only works for elements with position of fixed, absolute, or relative
+
+Note: when you give an element a z-index, you create a new positon context for the children of that element
+
+Q. could it happen that an element with a higher z-index be positoned lower than an element with a lower z-index?
+Ans. yes because that value is relative to the z-index of their parent element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
